@@ -1,27 +1,37 @@
 "use client"
 
 import Link from "next/link";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 const UserCreate = () => {
-    const [counter,setCounter] = useState(0);
 
-    const handleClick = () => {
-        setCounter(counter + 1);
+    const [loading, setLoading] = useState(false);
+    const [data, setData] = useState(null);
+
+    const getFirstName = async () => {
+        setLoading(true);
+        let result = await axios.get('http://localhost:8080/user/get-user-list');
+        console.log(result);
+        setData(result.data);
+        setLoading(false);
     }
-     return (
-    <>
-        <h1>User Create Page</h1>
-        <br />
-        <br />
-        <Link href={'list'}>List page</Link>
-        <div onClick={handleClick}>CLICK</div>
-        <h1>{counter}</h1>
-        <h1 onClick={() => {
-            setCounter(0);
-        }}>RELOAD</h1>
-    </>
-    )
+    return (
+        <>
+            {setLoading && data === null ? (
+                <div>
+                    <h1>Loading</h1>
+                    <button
+                        onClick={getFirstName}>Button
+                    </button>
+                </div>
+            ) : (
+                <>
+                    <p>{JSON.stringify(data)}</p>
+                </>
+            )}
+        </>
+    );
 }
 
 export default UserCreate;
