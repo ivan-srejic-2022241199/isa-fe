@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link";
-import useListData from "@/app/hooks/useListData";
+import useListData from "@/hooks/useListData";
 import {useEffect, useState} from "react";
 import DataTable from 'react-data-table-component'
 import {Spinner} from "reactstrap";
