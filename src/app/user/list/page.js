@@ -30,7 +30,7 @@ const ListUser = () => {
         getData,
         loading,
         data
-    } = useListData(`http://localhost:8080/user/get-user-page-list?pageNumber=${pageNumber - 1}&pageSize=${pageSize}`);
+    } = useListData(`http://localhost:8080/user/get-page-list?pageNumber=${pageNumber - 1}&pageSize=${pageSize}`);
 
     useEffect(() => {
         getData();

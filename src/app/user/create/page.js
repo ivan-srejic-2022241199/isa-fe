@@ -40,7 +40,7 @@ const UserCreate = () => {
                 <Col md={12} className={'d-flex justify-content-end'}>
                     <Button className={'btn btn-primary'} onClick={() => {
                         handleSubmit(async (data) => {
-                            await axios.post("http://localhost:8080/user/create-user-body", data);
+                            await axios.post("http://localhost:8080/user/create-body", data);
                         })();
                     }}>
                         Create user
